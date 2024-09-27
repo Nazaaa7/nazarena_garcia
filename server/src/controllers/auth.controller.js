@@ -1,5 +1,5 @@
 import { createJwt } from "../helpers/createJwt.js";
-import { createUser, getUserByCredentials } from "../models/user.model.js";
+import { getUserByCredentials } from "../models/user.model.js";
 
 export const signInCtrl = async (req, res) => {
   try {
@@ -23,6 +23,11 @@ export const signInCtrl = async (req, res) => {
 
 export const signUpCtrl = async (req, res) => {
   try {
+    const {username, email, password } = req.body;
+
+    const user = signUp (username, email, password);
+
+    res.status(201).json(user);
     // ! Completar la función signUpCtrl
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -31,6 +36,11 @@ export const signUpCtrl = async (req, res) => {
 
 export const signOutCtrl = (_req, res) => {
   try {
+    const {username, email, password } = req.body;
+
+    const user = signOut (username, email, password);
+
+    res.status(201).json(user);
     // ! Completar la función signOutCtrl
     res.status(200).json({ message: "Sign out success" });
   } catch (error) {
