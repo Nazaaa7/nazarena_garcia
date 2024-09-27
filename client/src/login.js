@@ -22,14 +22,19 @@ $form.addEventListener("submit", async (e) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(entries),
-  }).then((response) => {
-    if (response.ok) {
-      window.location.href = "/pages/orders";
-    } else {
-      window.alert("error al iniciar sesión");
-   
-      
-      // ! MOSTRAR UN MENSAJE DE ERROR AL USUARIO
-    }
-  });
-});
+  }) .then(async (response) => {
+      const data = await response.json(); 
+      if (response.ok) {
+        window.alert("Registrado");
+        window.location.href = "/pages/orders";
+      } else {
+        console.error("Error:", data);
+        window.alert("Error al registrarse: " + data);
+      }
+    }).catch((error) => {
+      console.error("Error en la solicitud:", error);
+      window.alert("Error al registrarse");
+    });
+    })
+  
+  
