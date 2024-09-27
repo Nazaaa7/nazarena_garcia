@@ -17,7 +17,7 @@ const data = [
     description:
       "An espresso with added hot water, making it smoother and less dense.",
   },
-  {
+  {     
     img: Img2,
     coffee: "Cappuccino",
     description:
